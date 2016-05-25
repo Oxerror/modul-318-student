@@ -21,10 +21,27 @@ namespace SearchWindow
         private void cmdSearch_Click(object sender, EventArgs e)
         {
             Transport transport = new Transport();
+            var CMBText1 = CMBSearch1.Text;
+            var CMBText2 = CMBSearch2.Text;
+            var Connectionsavailable = transport.GetConnections(CMBText1, CMBText2);
+            var i = 0;
+            TimeSpan ts = new TimeSpan();
 
-            //MessageBox.Show(transport.ToString());
+            lblFrom.Visible = true;
+            lblTo.Visible = true;
+            lblFrom.Text = CMBText1;
+            lblTo.Text = CMBText2;
 
-            //listResult.Text = Searchbox1.Text;
+            foreach (var Item in Connectionsavailable.ConnectionList)
+            {
+                ts = TimeSpan.Parse(Item.Duration);
+
+                listResult.Items.Add((i + 1).ToString());
+                listResult.Items[i].SubItems.Add("");
+                listResult.Items[i].SubItems.Add("");
+                listResult.Items[i].SubItems.Add(ts.ToString(@"hh\:mm"));
+                i++;
+            }
         }
 
         private void Helper(object sender, EventArgs e)
@@ -33,6 +50,8 @@ namespace SearchWindow
             {
                 return;
             }
+
+            return;
 
             var box = (ComboBox)sender;
 
