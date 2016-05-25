@@ -55,9 +55,6 @@ namespace SearchWindow
 
         private void Helper(object sender, EventArgs e)
         {
-            return;
-
-
             if (!(sender is ComboBox))
             {
                 return;
@@ -65,10 +62,13 @@ namespace SearchWindow
 
             var box = (ComboBox)sender;
 
+            // Just helps when the Length is more then 2, because the server is so slow
             if (box.Text.Length < 3)
             {
                 return;
             }
+            // Opens the Dropdown Menu of the Combobox (to see the possible stations)
+            box.DroppedDown = true;
             // Clear the ComboBoxList
             box.Items.Clear();
             // Set the Cursor to the correct spotz
@@ -81,7 +81,6 @@ namespace SearchWindow
             {
                 box.Items.Add(Item.Name); 
             }
-            box.DroppedDown = true;
         }
 
         private void cmdClear_Click(object sender, EventArgs e)
