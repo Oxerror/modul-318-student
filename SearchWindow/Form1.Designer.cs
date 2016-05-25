@@ -43,14 +43,15 @@
             this.Depart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Arrive = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmdClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdSearch
             // 
-            this.cmdSearch.Location = new System.Drawing.Point(15, 98);
+            this.cmdSearch.Location = new System.Drawing.Point(249, 30);
             this.cmdSearch.Name = "cmdSearch";
-            this.cmdSearch.Size = new System.Drawing.Size(75, 23);
-            this.cmdSearch.TabIndex = 0;
+            this.cmdSearch.Size = new System.Drawing.Size(97, 23);
+            this.cmdSearch.TabIndex = 2;
             this.cmdSearch.Text = "Search";
             this.cmdSearch.UseVisualStyleBackColor = true;
             this.cmdSearch.Click += new System.EventHandler(this.cmdSearch_Click);
@@ -78,8 +79,8 @@
             this.CMBSearch1.FormattingEnabled = true;
             this.CMBSearch1.Location = new System.Drawing.Point(78, 30);
             this.CMBSearch1.Name = "CMBSearch1";
-            this.CMBSearch1.Size = new System.Drawing.Size(121, 21);
-            this.CMBSearch1.TabIndex = 6;
+            this.CMBSearch1.Size = new System.Drawing.Size(156, 21);
+            this.CMBSearch1.TabIndex = 0;
             this.CMBSearch1.TextChanged += new System.EventHandler(this.Helper);
             // 
             // CMBSearch2
@@ -87,8 +88,8 @@
             this.CMBSearch2.FormattingEnabled = true;
             this.CMBSearch2.Location = new System.Drawing.Point(79, 59);
             this.CMBSearch2.Name = "CMBSearch2";
-            this.CMBSearch2.Size = new System.Drawing.Size(121, 21);
-            this.CMBSearch2.TabIndex = 7;
+            this.CMBSearch2.Size = new System.Drawing.Size(155, 21);
+            this.CMBSearch2.TabIndex = 1;
             this.CMBSearch2.TextChanged += new System.EventHandler(this.Helper);
             // 
             // label3
@@ -110,7 +111,7 @@
             this.listResult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.listResult.Location = new System.Drawing.Point(12, 163);
             this.listResult.Name = "listResult";
-            this.listResult.Size = new System.Drawing.Size(341, 97);
+            this.listResult.Size = new System.Drawing.Size(334, 97);
             this.listResult.TabIndex = 9;
             this.listResult.UseCompatibleStateImageBehavior = false;
             this.listResult.View = System.Windows.Forms.View.Details;
@@ -173,11 +174,22 @@
             this.Number.Text = "";
             this.Number.Width = 30;
             // 
+            // cmdClear
+            // 
+            this.cmdClear.Location = new System.Drawing.Point(249, 59);
+            this.cmdClear.Name = "cmdClear";
+            this.cmdClear.Size = new System.Drawing.Size(97, 23);
+            this.cmdClear.TabIndex = 3;
+            this.cmdClear.Text = "Clear";
+            this.cmdClear.UseVisualStyleBackColor = true;
+            this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 273);
+            this.ClientSize = new System.Drawing.Size(363, 273);
+            this.Controls.Add(this.cmdClear);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblFrom);
@@ -213,6 +225,7 @@
         private System.Windows.Forms.ColumnHeader Depart;
         private System.Windows.Forms.ColumnHeader Arrive;
         private System.Windows.Forms.ColumnHeader Number;
+        private System.Windows.Forms.Button cmdClear;
     }
 }
 
