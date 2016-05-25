@@ -20,38 +20,54 @@ namespace SearchWindow
 
         private void cmdSearch_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-
-            Transport transport = new Transport();
-            var CMBText1 = CMBSearch1.Text;
-            var CMBText2 = CMBSearch2.Text;
-            var Connectionsavailable = transport.GetConnections(CMBText1, CMBText2);
-            var i = 0;
-
-            #region From-To label
-            lblFrom.Visible = true;
-            lblTo.Visible = true;
-            lblFrom.Text = Connectionsavailable.ConnectionList[0].From.Station.Name;
-            lblTo.Text = Connectionsavailable.ConnectionList[0].To.Station.Name;
-            #endregion
-
-            #region ListView
-            foreach (var connection in Connectionsavailable.ConnectionList)
+            try
             {
-                TimeSpan ts;
-                var item = new ListViewItem((i + 1).ToString());
-                item.SubItems.Add(DateTime.Parse(connection.From.Departure).ToString("hh:mm"));
-                item.SubItems.Add(DateTime.Parse(connection.To.Arrival).ToString("hh:mm"));
-                ts = TimeSpan.ParseExact(connection.Duration, @"dd\dhh\:mm\:ss", null);
-                item.SubItems.Add(ts.ToString(@"hh\:mm"));
-                listResult.Items.Add(item);
-                i++;
+                Cursor.Current = Cursors.WaitCursor;
 
+                Transport transport = new Transport();
+                var CMBText1 = CMBSearch1.Text;
+                var CMBText2 = CMBSearch2.Text;
+                var Connectionsavailable = transport.GetConnections(CMBText1, CMBText2);
+                var i = 0;
+
+                #region From-To label
+                lblFrom.Visible = true;
+                lblTo.Visible = true;
+                lblFrom.Text = CMBText1;
+                lblTo.Text = CMBText2;
+                #endregion
+
+                #region ListView
+                foreach (var connection in Connectionsavailable.ConnectionList)
+                {
+                    TimeSpan ts;
+                    var item = new ListViewItem((i + 1).ToString());
+                    item.SubItems.Add(connection.From.Station.Name);
+                    item.SubItems.Add(DateTime.Parse(connection.From.Departure).ToString("hh:mm"));
+                    item.SubItems.Add(connection.From.Platform);
+                    item.SubItems.Add(connection.To.Station.Name);
+                    item.SubItems.Add(DateTime.Parse(connection.To.Arrival).ToString("hh:mm"));
+                    item.SubItems.Add(connection.To.Platform);
+                    ts = TimeSpan.ParseExact(connection.Duration, @"dd\dhh\:mm\:ss", null);
+                    item.SubItems.Add(ts.ToString(@"hh\:mm"));
+                    listResult.Items.Add(item);
+                    i++;
+
+                }
+                #endregion
+
+                Cursor.Current = Cursors.Default;
+           }
+           catch(Exception q)
+           {
+                MessageBox.Show("Your input is invalid!\n\n" + q.Message,
+                                "Important Note",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation,
+                                MessageBoxDefaultButton.Button1);
+                return;
             }
-            #endregion
-
-            Cursor.Current = Cursors.Default;
-        }
+}
 
         private void Helper(object sender, EventArgs e)
         {
@@ -67,6 +83,7 @@ namespace SearchWindow
             {
                 return;
             }
+
             // Opens the Dropdown Menu of the Combobox (to see the possible stations)
             box.DroppedDown = true;
             // Clear the ComboBoxList

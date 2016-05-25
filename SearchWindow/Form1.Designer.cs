@@ -35,15 +35,20 @@
             this.CMBSearch2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.listResult = new System.Windows.Forms.ListView();
+            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Depart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Arrive = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Duration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
-            this.Depart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Arrive = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdClear = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.From = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.To = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FromPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ToPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // cmdSearch
@@ -107,19 +112,41 @@
             this.Number,
             this.Depart,
             this.Arrive,
-            this.Duration});
+            this.Duration,
+            this.From,
+            this.To,
+            this.FromPlatform,
+            this.ToPlatform});
             this.listResult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.listResult.Location = new System.Drawing.Point(12, 163);
             this.listResult.Name = "listResult";
-            this.listResult.Size = new System.Drawing.Size(334, 97);
+            this.listResult.Size = new System.Drawing.Size(570, 97);
             this.listResult.TabIndex = 9;
             this.listResult.UseCompatibleStateImageBehavior = false;
             this.listResult.View = System.Windows.Forms.View.Details;
             // 
+            // Number
+            // 
+            this.Number.Text = "";
+            this.Number.Width = 30;
+            // 
+            // Depart
+            // 
+            this.Depart.DisplayIndex = 2;
+            this.Depart.Text = "Depart";
+            this.Depart.Width = 70;
+            // 
+            // Arrive
+            // 
+            this.Arrive.DisplayIndex = 4;
+            this.Arrive.Text = "Arrive";
+            this.Arrive.Width = 70;
+            // 
             // Duration
             // 
+            this.Duration.DisplayIndex = 7;
             this.Duration.Text = "Duration";
-            this.Duration.Width = 100;
+            this.Duration.Width = 70;
             // 
             // label4
             // 
@@ -159,21 +186,6 @@
             this.lblTo.Text = "label7";
             this.lblTo.Visible = false;
             // 
-            // Depart
-            // 
-            this.Depart.Text = "Depart";
-            this.Depart.Width = 100;
-            // 
-            // Arrive
-            // 
-            this.Arrive.Text = "Arrive";
-            this.Arrive.Width = 100;
-            // 
-            // Number
-            // 
-            this.Number.Text = "";
-            this.Number.Width = 30;
-            // 
             // cmdClear
             // 
             this.cmdClear.Location = new System.Drawing.Point(249, 59);
@@ -184,11 +196,42 @@
             this.cmdClear.UseVisualStyleBackColor = true;
             this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(249, 89);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Stationsboard";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // From
+            // 
+            this.From.DisplayIndex = 1;
+            this.From.Text = "From";
+            this.From.Width = 100;
+            // 
+            // To
+            // 
+            this.To.Text = "To";
+            this.To.Width = 100;
+            // 
+            // FromPlatform
+            // 
+            this.FromPlatform.DisplayIndex = 3;
+            this.FromPlatform.Text = "Platform";
+            // 
+            // ToPlatform
+            // 
+            this.ToPlatform.DisplayIndex = 6;
+            this.ToPlatform.Text = "Platform";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 273);
+            this.ClientSize = new System.Drawing.Size(596, 273);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmdClear);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.label6);
@@ -226,6 +269,11 @@
         private System.Windows.Forms.ColumnHeader Arrive;
         private System.Windows.Forms.ColumnHeader Number;
         private System.Windows.Forms.Button cmdClear;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader From;
+        private System.Windows.Forms.ColumnHeader To;
+        private System.Windows.Forms.ColumnHeader FromPlatform;
+        private System.Windows.Forms.ColumnHeader ToPlatform;
     }
 }
 
