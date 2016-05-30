@@ -67,37 +67,6 @@ namespace SearchWindow
                                 MessageBoxDefaultButton.Button1);
                 return;
             }
-}
-
-        private void Helper(object sender, EventArgs e)
-        {
-            if (!(sender is ComboBox))
-            {
-                return;
-            }
-
-            var box = (ComboBox)sender;
-
-            // Just helps when the Length is more then 2, because the server is so slow
-            if (box.Text.Length < 3)
-            {
-                return;
-            }
-
-            // Opens the Dropdown Menu of the Combobox (to see the possible stations)
-            box.DroppedDown = true;
-            // Clear the ComboBoxList
-            box.Items.Clear();
-            // Set the Cursor to the correct spotz
-            box.Select(box.Text.Length, box.Text.Length);
-            Transport transport = new Transport();
-            var SearchText = box.Text;
-            var StationNames = transport.GetStations(SearchText);
-            //CMBSearch1.Items.AddRange(StationNames.StationList.ToArray());
-            foreach (var Item in StationNames.StationList)
-            {
-                box.Items.Add(Item.Name); 
-            }
         }
 
         private void cmdClear_Click(object sender, EventArgs e)
@@ -107,6 +76,41 @@ namespace SearchWindow
             CMBSearch2.Text = "";
             CMBSearch2.Items.Clear();
             listResult.Items.Clear();
+        }
+
+        private void Helper(object sender, KeyEventArgs e)
+        {
+            if (!(sender is ComboBox))
+            {
+                return;
+            }
+
+            var box = (ComboBox)sender;
+
+            // Exit the Code when a Arrowkey is pressed (for Selection) or Control --> Shift key
+            if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Control || e.KeyCode == Keys.Shift)
+            {
+                return;
+            }
+
+            var selectionStart = box.SelectionStart;
+            var selectionLength = box.SelectedText.Length;
+            // Clear the ComboBoxList
+            box.Items.Clear();
+
+            // Set the Cursor to the correct spotz
+            box.Select(selectionStart, selectionLength);
+
+            // Opens the Dropdown Menu of the Combobox (to see the possible stations)
+            box.DroppedDown = true;
+            Transport transport = new Transport();
+            var SearchText = box.Text;
+            var StationNames = transport.GetStations(SearchText);
+            //CMBSearch1.Items.AddRange(StationNames.StationList.ToArray());
+            foreach (var Item in StationNames.StationList)
+            {
+                box.Items.Add(Item.Name);
+            }
         }
     }
 }

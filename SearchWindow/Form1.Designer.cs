@@ -39,16 +39,16 @@
             this.Depart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Arrive = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Duration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.From = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.To = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FromPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ToPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.lblFrom = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.cmdClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.From = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.To = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FromPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ToPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // cmdSearch
@@ -86,7 +86,7 @@
             this.CMBSearch1.Name = "CMBSearch1";
             this.CMBSearch1.Size = new System.Drawing.Size(156, 21);
             this.CMBSearch1.TabIndex = 0;
-            this.CMBSearch1.TextChanged += new System.EventHandler(this.Helper);
+            this.CMBSearch1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Helper);
             // 
             // CMBSearch2
             // 
@@ -95,7 +95,7 @@
             this.CMBSearch2.Name = "CMBSearch2";
             this.CMBSearch2.Size = new System.Drawing.Size(155, 21);
             this.CMBSearch2.TabIndex = 1;
-            this.CMBSearch2.TextChanged += new System.EventHandler(this.Helper);
+            this.CMBSearch2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Helper);
             // 
             // label3
             // 
@@ -147,6 +147,27 @@
             this.Duration.DisplayIndex = 7;
             this.Duration.Text = "Duration";
             this.Duration.Width = 70;
+            // 
+            // From
+            // 
+            this.From.DisplayIndex = 1;
+            this.From.Text = "From";
+            this.From.Width = 100;
+            // 
+            // To
+            // 
+            this.To.Text = "To";
+            this.To.Width = 100;
+            // 
+            // FromPlatform
+            // 
+            this.FromPlatform.DisplayIndex = 3;
+            this.FromPlatform.Text = "Platform";
+            // 
+            // ToPlatform
+            // 
+            this.ToPlatform.DisplayIndex = 6;
+            this.ToPlatform.Text = "Platform";
             // 
             // label4
             // 
@@ -202,29 +223,8 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 23);
             this.button1.TabIndex = 14;
-            this.button1.Text = "Stationsboard";
+            this.button1.Text = "Stationboard";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // From
-            // 
-            this.From.DisplayIndex = 1;
-            this.From.Text = "From";
-            this.From.Width = 100;
-            // 
-            // To
-            // 
-            this.To.Text = "To";
-            this.To.Width = 100;
-            // 
-            // FromPlatform
-            // 
-            this.FromPlatform.DisplayIndex = 3;
-            this.FromPlatform.Text = "Platform";
-            // 
-            // ToPlatform
-            // 
-            this.ToPlatform.DisplayIndex = 6;
-            this.ToPlatform.Text = "Platform";
             // 
             // Form1
             // 
