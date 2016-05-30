@@ -37,6 +37,8 @@ namespace SearchWindow
                 lblTo.Text = CMBText2;
                 #endregion
 
+                listResult.Items.Clear();
+
                 #region ListView
                 foreach (var connection in Connectionsavailable.ConnectionList)
                 {
@@ -111,6 +113,17 @@ namespace SearchWindow
             {
                 box.Items.Add(Item.Name);
             }
+        }
+
+        private void cmdstatonboard_Click(object sender, EventArgs e)
+        {
+            var CMBText1 = CMBSearch1.Text;
+            Transport transport = new Transport();
+            var Station = transport.GetStations(CMBText1);
+            var StationID = Station.StationList[0].Id;
+
+            Form2 stationboard = new Form2(CMBText1, StationID);
+            stationboard.Show();
         }
     }
 }

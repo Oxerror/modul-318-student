@@ -48,7 +48,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.cmdClear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdstationboard = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // cmdSearch
@@ -110,13 +113,13 @@
             // 
             this.listResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Number,
-            this.Depart,
-            this.Arrive,
-            this.Duration,
             this.From,
-            this.To,
+            this.Depart,
             this.FromPlatform,
-            this.ToPlatform});
+            this.To,
+            this.Arrive,
+            this.ToPlatform,
+            this.Duration});
             this.listResult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.listResult.Location = new System.Drawing.Point(12, 163);
             this.listResult.Name = "listResult";
@@ -132,25 +135,21 @@
             // 
             // Depart
             // 
-            this.Depart.DisplayIndex = 2;
             this.Depart.Text = "Depart";
             this.Depart.Width = 70;
             // 
             // Arrive
             // 
-            this.Arrive.DisplayIndex = 4;
             this.Arrive.Text = "Arrive";
             this.Arrive.Width = 70;
             // 
             // Duration
             // 
-            this.Duration.DisplayIndex = 7;
             this.Duration.Text = "Duration";
             this.Duration.Width = 70;
             // 
             // From
             // 
-            this.From.DisplayIndex = 1;
             this.From.Text = "From";
             this.From.Width = 100;
             // 
@@ -161,12 +160,10 @@
             // 
             // FromPlatform
             // 
-            this.FromPlatform.DisplayIndex = 3;
             this.FromPlatform.Text = "Platform";
             // 
             // ToPlatform
             // 
-            this.ToPlatform.DisplayIndex = 6;
             this.ToPlatform.Text = "Platform";
             // 
             // label4
@@ -217,21 +214,54 @@
             this.cmdClear.UseVisualStyleBackColor = true;
             this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
             // 
-            // button1
+            // cmdstationboard
             // 
-            this.button1.Location = new System.Drawing.Point(249, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Stationboard";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cmdstationboard.Location = new System.Drawing.Point(249, 89);
+            this.cmdstationboard.Name = "cmdstationboard";
+            this.cmdstationboard.Size = new System.Drawing.Size(96, 23);
+            this.cmdstationboard.TabIndex = 14;
+            this.cmdstationboard.Text = "Stationboard";
+            this.cmdstationboard.UseVisualStyleBackColor = true;
+            this.cmdstationboard.Click += new System.EventHandler(this.cmdstatonboard_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(382, 92);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 15;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(382, 33);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.TabIndex = 16;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(382, 63);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(85, 17);
+            this.radioButton2.TabIndex = 17;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "radioButton2";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 273);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.cmdstationboard);
             this.Controls.Add(this.cmdClear);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.label6);
@@ -269,11 +299,14 @@
         private System.Windows.Forms.ColumnHeader Arrive;
         private System.Windows.Forms.ColumnHeader Number;
         private System.Windows.Forms.Button cmdClear;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdstationboard;
         private System.Windows.Forms.ColumnHeader From;
         private System.Windows.Forms.ColumnHeader To;
         private System.Windows.Forms.ColumnHeader FromPlatform;
         private System.Windows.Forms.ColumnHeader ToPlatform;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 
