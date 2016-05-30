@@ -36,27 +36,36 @@
             this.label3 = new System.Windows.Forms.Label();
             this.listResult = new System.Windows.Forms.ListView();
             this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Depart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Arrive = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Duration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.From = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.To = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Depart = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FromPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.To = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Arrive = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ToPlatform = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Duration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
-            this.lblFrom = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblTo = new System.Windows.Forms.Label();
             this.cmdClear = new System.Windows.Forms.Button();
             this.cmdstationboard = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.rbDepart = new System.Windows.Forms.RadioButton();
+            this.rbArrival = new System.Windows.Forms.RadioButton();
+            this.TimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmdMap1 = new System.Windows.Forms.Button();
+            this.cmdMap2 = new System.Windows.Forms.Button();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.lblFrom = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdSearch
             // 
-            this.cmdSearch.Location = new System.Drawing.Point(249, 30);
+            this.cmdSearch.Location = new System.Drawing.Point(275, 91);
             this.cmdSearch.Name = "cmdSearch";
             this.cmdSearch.Size = new System.Drawing.Size(97, 23);
             this.cmdSearch.TabIndex = 2;
@@ -121,7 +130,7 @@
             this.ToPlatform,
             this.Duration});
             this.listResult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listResult.Location = new System.Drawing.Point(12, 163);
+            this.listResult.Location = new System.Drawing.Point(12, 144);
             this.listResult.Name = "listResult";
             this.listResult.Size = new System.Drawing.Size(570, 97);
             this.listResult.TabIndex = 9;
@@ -133,134 +142,231 @@
             this.Number.Text = "";
             this.Number.Width = 30;
             // 
+            // From
+            // 
+            this.From.Text = "From";
+            this.From.Width = 100;
+            // 
             // Depart
             // 
             this.Depart.Text = "Depart";
             this.Depart.Width = 70;
             // 
-            // Arrive
+            // FromPlatform
             // 
-            this.Arrive.Text = "Arrive";
-            this.Arrive.Width = 70;
-            // 
-            // Duration
-            // 
-            this.Duration.Text = "Duration";
-            this.Duration.Width = 70;
-            // 
-            // From
-            // 
-            this.From.Text = "From";
-            this.From.Width = 100;
+            this.FromPlatform.Text = "Platform";
             // 
             // To
             // 
             this.To.Text = "To";
             this.To.Width = 100;
             // 
-            // FromPlatform
+            // Arrive
             // 
-            this.FromPlatform.Text = "Platform";
+            this.Arrive.Text = "Arrive";
+            this.Arrive.Width = 70;
             // 
             // ToPlatform
             // 
             this.ToPlatform.Text = "Platform";
             // 
+            // Duration
+            // 
+            this.Duration.Text = "Duration";
+            this.Duration.Width = 70;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 128);
+            this.label4.Location = new System.Drawing.Point(16, 102);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "From:";
             // 
-            // lblFrom
-            // 
-            this.lblFrom.AutoSize = true;
-            this.lblFrom.Location = new System.Drawing.Point(58, 128);
-            this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(35, 13);
-            this.lblFrom.TabIndex = 11;
-            this.lblFrom.Text = "label5";
-            this.lblFrom.Visible = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 146);
+            this.label6.Location = new System.Drawing.Point(16, 120);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "To:";
             // 
-            // lblTo
-            // 
-            this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(58, 147);
-            this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(35, 13);
-            this.lblTo.TabIndex = 13;
-            this.lblTo.Text = "label7";
-            this.lblTo.Visible = false;
-            // 
             // cmdClear
             // 
-            this.cmdClear.Location = new System.Drawing.Point(249, 59);
+            this.cmdClear.Location = new System.Drawing.Point(480, 91);
             this.cmdClear.Name = "cmdClear";
             this.cmdClear.Size = new System.Drawing.Size(97, 23);
-            this.cmdClear.TabIndex = 3;
+            this.cmdClear.TabIndex = 8;
             this.cmdClear.Text = "Clear";
             this.cmdClear.UseVisualStyleBackColor = true;
             this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
             // 
             // cmdstationboard
             // 
-            this.cmdstationboard.Location = new System.Drawing.Point(249, 89);
+            this.cmdstationboard.Location = new System.Drawing.Point(378, 91);
             this.cmdstationboard.Name = "cmdstationboard";
             this.cmdstationboard.Size = new System.Drawing.Size(96, 23);
-            this.cmdstationboard.TabIndex = 14;
+            this.cmdstationboard.TabIndex = 3;
             this.cmdstationboard.Text = "Stationboard";
             this.cmdstationboard.UseVisualStyleBackColor = true;
             this.cmdstationboard.Click += new System.EventHandler(this.cmdstatonboard_Click);
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(382, 92);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 15;
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.Location = new System.Drawing.Point(488, 50);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(87, 20);
+            this.dateTimePicker.TabIndex = 7;
             // 
-            // radioButton1
+            // rbDepart
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(382, 33);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 16;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbDepart.AutoSize = true;
+            this.rbDepart.Checked = true;
+            this.rbDepart.Location = new System.Drawing.Point(294, 37);
+            this.rbDepart.Name = "rbDepart";
+            this.rbDepart.Size = new System.Drawing.Size(57, 17);
+            this.rbDepart.TabIndex = 4;
+            this.rbDepart.TabStop = true;
+            this.rbDepart.Text = "Depart";
+            this.rbDepart.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbArrival
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(382, 63);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 17;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbArrival.AutoSize = true;
+            this.rbArrival.Location = new System.Drawing.Point(294, 64);
+            this.rbArrival.Name = "rbArrival";
+            this.rbArrival.Size = new System.Drawing.Size(54, 17);
+            this.rbArrival.TabIndex = 5;
+            this.rbArrival.Text = "Arrival";
+            this.rbArrival.UseVisualStyleBackColor = true;
+            // 
+            // TimePicker
+            // 
+            this.TimePicker.CustomFormat = "HH:mm";
+            this.TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.TimePicker.Location = new System.Drawing.Point(412, 50);
+            this.TimePicker.Name = "TimePicker";
+            this.TimePicker.ShowUpDown = true;
+            this.TimePicker.Size = new System.Drawing.Size(52, 20);
+            this.TimePicker.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(367, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "at";
+            // 
+            // cmdMap1
+            // 
+            this.cmdMap1.Location = new System.Drawing.Point(240, 30);
+            this.cmdMap1.Name = "cmdMap1";
+            this.cmdMap1.Size = new System.Drawing.Size(40, 23);
+            this.cmdMap1.TabIndex = 24;
+            this.cmdMap1.Text = "Map";
+            this.cmdMap1.UseVisualStyleBackColor = true;
+            this.cmdMap1.Click += new System.EventHandler(this.cmdMap_Click);
+            // 
+            // cmdMap2
+            // 
+            this.cmdMap2.Location = new System.Drawing.Point(240, 60);
+            this.cmdMap2.Name = "cmdMap2";
+            this.cmdMap2.Size = new System.Drawing.Size(40, 23);
+            this.cmdMap2.TabIndex = 25;
+            this.cmdMap2.Text = "Map";
+            this.cmdMap2.UseVisualStyleBackColor = true;
+            this.cmdMap2.Click += new System.EventHandler(this.cmdMap_Click);
+            // 
+            // lblTo
+            // 
+            this.lblTo.AutoSize = true;
+            this.lblTo.Location = new System.Drawing.Point(58, 121);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(35, 13);
+            this.lblTo.TabIndex = 13;
+            this.lblTo.Text = "label7";
+            this.lblTo.Visible = false;
+            // 
+            // lblFrom
+            // 
+            this.lblFrom.AutoSize = true;
+            this.lblFrom.Location = new System.Drawing.Point(58, 102);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(35, 13);
+            this.lblFrom.TabIndex = 11;
+            this.lblFrom.Text = "label5";
+            this.lblFrom.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(172, 121);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Date:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(172, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Time:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(211, 121);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(41, 13);
+            this.lblDate.TabIndex = 29;
+            this.lblDate.Text = "label10";
+            this.lblDate.Visible = false;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(211, 102);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(35, 13);
+            this.lblTime.TabIndex = 28;
+            this.lblTime.Text = "label9";
+            this.lblTime.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(462, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "Find me on the Map";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 273);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.ClientSize = new System.Drawing.Size(593, 251);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lblTime);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cmdMap2);
+            this.Controls.Add(this.cmdMap1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.TimePicker);
+            this.Controls.Add(this.rbArrival);
+            this.Controls.Add(this.rbDepart);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.cmdstationboard);
             this.Controls.Add(this.cmdClear);
             this.Controls.Add(this.lblTo);
@@ -292,9 +398,7 @@
         private System.Windows.Forms.ListView listResult;
         private System.Windows.Forms.ColumnHeader Duration;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.ColumnHeader Depart;
         private System.Windows.Forms.ColumnHeader Arrive;
         private System.Windows.Forms.ColumnHeader Number;
@@ -304,9 +408,20 @@
         private System.Windows.Forms.ColumnHeader To;
         private System.Windows.Forms.ColumnHeader FromPlatform;
         private System.Windows.Forms.ColumnHeader ToPlatform;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.RadioButton rbDepart;
+        private System.Windows.Forms.RadioButton rbArrival;
+        private System.Windows.Forms.DateTimePicker TimePicker;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button cmdMap1;
+        private System.Windows.Forms.Button cmdMap2;
+        private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.Label lblFrom;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Button button1;
     }
 }
 
