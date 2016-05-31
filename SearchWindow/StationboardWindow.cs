@@ -11,9 +11,9 @@ using SwissTransport;
 
 namespace SearchWindow
 {
-    public partial class Form2 : Form
+    public partial class StationboardWindow : Form
     {
-        public Form2(string CMBText1, string StationID)
+        public StationboardWindow(string CMBText1, string StationID)
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace SearchWindow
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdSendMail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdSearch
@@ -68,7 +68,7 @@
             this.cmdSearch.Location = new System.Drawing.Point(275, 91);
             this.cmdSearch.Name = "cmdSearch";
             this.cmdSearch.Size = new System.Drawing.Size(97, 23);
-            this.cmdSearch.TabIndex = 2;
+            this.cmdSearch.TabIndex = 5;
             this.cmdSearch.Text = "Search";
             this.cmdSearch.UseVisualStyleBackColor = true;
             this.cmdSearch.Click += new System.EventHandler(this.cmdSearch_Click);
@@ -120,6 +120,9 @@
             // 
             // listResult
             // 
+            this.listResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Number,
             this.From,
@@ -129,10 +132,13 @@
             this.Arrive,
             this.ToPlatform,
             this.Duration});
+            this.listResult.FullRowSelect = true;
+            this.listResult.HideSelection = false;
             this.listResult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listResult.Location = new System.Drawing.Point(12, 144);
+            this.listResult.Location = new System.Drawing.Point(12, 165);
+            this.listResult.MultiSelect = false;
             this.listResult.Name = "listResult";
-            this.listResult.Size = new System.Drawing.Size(570, 97);
+            this.listResult.Size = new System.Drawing.Size(570, 181);
             this.listResult.TabIndex = 9;
             this.listResult.UseCompatibleStateImageBehavior = false;
             this.listResult.View = System.Windows.Forms.View.Details;
@@ -178,7 +184,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 102);
+            this.label4.Location = new System.Drawing.Point(16, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 10;
@@ -187,7 +193,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 120);
+            this.label6.Location = new System.Drawing.Point(16, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 13);
             this.label6.TabIndex = 12;
@@ -198,17 +204,18 @@
             this.cmdClear.Location = new System.Drawing.Point(480, 91);
             this.cmdClear.Name = "cmdClear";
             this.cmdClear.Size = new System.Drawing.Size(97, 23);
-            this.cmdClear.TabIndex = 8;
+            this.cmdClear.TabIndex = 10;
             this.cmdClear.Text = "Clear";
             this.cmdClear.UseVisualStyleBackColor = true;
             this.cmdClear.Click += new System.EventHandler(this.cmdClear_Click);
             // 
             // cmdstationboard
             // 
+            this.cmdstationboard.Enabled = false;
             this.cmdstationboard.Location = new System.Drawing.Point(378, 91);
             this.cmdstationboard.Name = "cmdstationboard";
             this.cmdstationboard.Size = new System.Drawing.Size(96, 23);
-            this.cmdstationboard.TabIndex = 3;
+            this.cmdstationboard.TabIndex = 6;
             this.cmdstationboard.Text = "Stationboard";
             this.cmdstationboard.UseVisualStyleBackColor = true;
             this.cmdstationboard.Click += new System.EventHandler(this.cmdstatonboard_Click);
@@ -219,7 +226,7 @@
             this.dateTimePicker.Location = new System.Drawing.Point(488, 50);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(87, 20);
-            this.dateTimePicker.TabIndex = 7;
+            this.dateTimePicker.TabIndex = 4;
             // 
             // rbDepart
             // 
@@ -228,7 +235,7 @@
             this.rbDepart.Location = new System.Drawing.Point(294, 37);
             this.rbDepart.Name = "rbDepart";
             this.rbDepart.Size = new System.Drawing.Size(57, 17);
-            this.rbDepart.TabIndex = 4;
+            this.rbDepart.TabIndex = 2;
             this.rbDepart.TabStop = true;
             this.rbDepart.Text = "Depart";
             this.rbDepart.UseVisualStyleBackColor = true;
@@ -251,7 +258,7 @@
             this.TimePicker.Name = "TimePicker";
             this.TimePicker.ShowUpDown = true;
             this.TimePicker.Size = new System.Drawing.Size(52, 20);
-            this.TimePicker.TabIndex = 6;
+            this.TimePicker.TabIndex = 3;
             // 
             // label5
             // 
@@ -267,7 +274,7 @@
             this.cmdMap1.Location = new System.Drawing.Point(240, 30);
             this.cmdMap1.Name = "cmdMap1";
             this.cmdMap1.Size = new System.Drawing.Size(40, 23);
-            this.cmdMap1.TabIndex = 24;
+            this.cmdMap1.TabIndex = 7;
             this.cmdMap1.Text = "Map";
             this.cmdMap1.UseVisualStyleBackColor = true;
             this.cmdMap1.Click += new System.EventHandler(this.cmdMap_Click);
@@ -277,7 +284,7 @@
             this.cmdMap2.Location = new System.Drawing.Point(240, 60);
             this.cmdMap2.Name = "cmdMap2";
             this.cmdMap2.Size = new System.Drawing.Size(40, 23);
-            this.cmdMap2.TabIndex = 25;
+            this.cmdMap2.TabIndex = 8;
             this.cmdMap2.Text = "Map";
             this.cmdMap2.UseVisualStyleBackColor = true;
             this.cmdMap2.Click += new System.EventHandler(this.cmdMap_Click);
@@ -285,7 +292,7 @@
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(58, 121);
+            this.lblTo.Location = new System.Drawing.Point(58, 143);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(35, 13);
             this.lblTo.TabIndex = 13;
@@ -295,7 +302,7 @@
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
-            this.lblFrom.Location = new System.Drawing.Point(58, 102);
+            this.lblFrom.Location = new System.Drawing.Point(58, 124);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(35, 13);
             this.lblFrom.TabIndex = 11;
@@ -305,7 +312,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(172, 121);
+            this.label7.Location = new System.Drawing.Point(280, 143);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 27;
@@ -314,7 +321,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(172, 102);
+            this.label8.Location = new System.Drawing.Point(280, 124);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 26;
@@ -323,7 +330,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(211, 121);
+            this.lblDate.Location = new System.Drawing.Point(319, 143);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(41, 13);
             this.lblDate.TabIndex = 29;
@@ -333,29 +340,31 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(211, 102);
+            this.lblTime.Location = new System.Drawing.Point(319, 124);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(35, 13);
             this.lblTime.TabIndex = 28;
             this.lblTime.Text = "label9";
             this.lblTime.Visible = false;
             // 
-            // button1
+            // cmdSendMail
             // 
-            this.button1.Location = new System.Drawing.Point(462, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 23);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Find me on the Map";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cmdSendMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdSendMail.Enabled = false;
+            this.cmdSendMail.Location = new System.Drawing.Point(412, 352);
+            this.cmdSendMail.Name = "cmdSendMail";
+            this.cmdSendMail.Size = new System.Drawing.Size(163, 23);
+            this.cmdSendMail.TabIndex = 9;
+            this.cmdSendMail.Text = "send all Connections per Email";
+            this.cmdSendMail.UseVisualStyleBackColor = true;
+            this.cmdSendMail.Click += new System.EventHandler(this.cmdSendMail_Click);
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 251);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(593, 379);
+            this.Controls.Add(this.cmdSendMail);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.label7);
@@ -380,7 +389,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdSearch);
-            this.Name = "Form1";
+            this.MinimumSize = new System.Drawing.Size(601, 406);
+            this.Name = "MainWindow";
             this.Text = "Search Connections";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -421,7 +431,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdSendMail;
     }
 }
 

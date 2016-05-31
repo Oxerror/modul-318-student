@@ -1,6 +1,6 @@
 ﻿namespace SearchWindow
 {
-    partial class Form2
+    partial class StationboardWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -36,11 +36,15 @@
             // 
             // lvStationboard
             // 
+            this.lvStationboard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvStationboard.BackColor = System.Drawing.SystemColors.Window;
             this.lvStationboard.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lvStationboard.FullRowSelect = true;
             this.lvStationboard.Location = new System.Drawing.Point(16, 12);
             this.lvStationboard.Name = "lvStationboard";
             this.lvStationboard.Size = new System.Drawing.Size(264, 249);
@@ -51,6 +55,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "To";
+            this.columnHeader1.Width = 120;
             // 
             // columnHeader2
             // 
@@ -60,13 +65,14 @@
             // 
             this.columnHeader3.Text = "Linie";
             // 
-            // Form2
+            // StationboardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
             this.Controls.Add(this.lvStationboard);
-            this.Name = "Form2";
+            this.MinimumSize = new System.Drawing.Size(300, 300);
+            this.Name = "StationboardWindow";
             this.Text = "Stationboard";
             this.ResumeLayout(false);
 

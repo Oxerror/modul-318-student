@@ -9,34 +9,42 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Net.Mail;
 
 namespace SearchWindow
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
-        public Form1()
+        private Connections Connections = null;
+
+        public MainWindow()
         {
             InitializeComponent();
         }
 
         private void cmdSearch_Click(object sender, EventArgs e)
         {
-            try
+            if (CMBSearch1.Text == "" || CMBSearch2.Text == "")
             {
-                Cursor.Current = Cursors.WaitCursor;
+                return;
+            }
+    
+            Cursor.Current = Cursors.WaitCursor;
+    
+            Transport transport = new Transport();
+            var CMBText1 = CMBSearch1.Text;
+            var CMBText2 = CMBSearch2.Text;
+            int isArrivaltime = 0;
+            if (rbArrival.Checked) 
+            {
+                isArrivaltime = 1;
+            }
+            var Connectionsavailable = transport.GetConnections(CMBText1, CMBText2, dateTimePicker.Value.ToString(@"yyyy\-MM\-dd"), TimePicker.Value.ToString(@"HH\:mm"), isArrivaltime);
+            var i = 0;
 
-                Transport transport = new Transport();
-                var CMBText1 = CMBSearch1.Text;
-                var CMBText2 = CMBSearch2.Text;
-                int isArrivaltime = 0;
-                if (rbArrival.Checked) 
-                {
-                    isArrivaltime = 1;
-                }
-                var Connectionsavailable = transport.GetConnections(CMBText1, CMBText2, dateTimePicker.Value.ToString(@"yyyy\-MM\-dd"), TimePicker.Value.ToString(@"HH\:mm"), isArrivaltime);
-                var i = 0;
-
-                #region Showlabels
+            Connections = Connectionsavailable;
+    
+            #region Showlabels
                 lblFrom.Visible = true;
                 lblTo.Visible = true;
                 lblDate.Visible = true;
@@ -47,10 +55,14 @@ namespace SearchWindow
                 lblTime.Text = TimePicker.Value.ToString(@"HH\:mm");
 
                 #endregion
-
-                listResult.Items.Clear();
-
-                #region ListView
+    
+            listResult.Items.Clear();
+            if (Connectionsavailable.ConnectionList.Count == 0)
+            {
+                return;
+            }
+    
+            #region ListView
                 foreach (var connection in Connectionsavailable.ConnectionList)
                 {
                     TimeSpan ts;
@@ -68,18 +80,9 @@ namespace SearchWindow
 
                 }
                 #endregion
-
-                Cursor.Current = Cursors.Default;
-           }
-           catch(Exception q)
-           {
-                MessageBox.Show("Your input is invalid!\n\n" + q.Message,
-                                "Important Note",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Exclamation,
-                                MessageBoxDefaultButton.Button1);
-                return;
-            }
+    
+            Cursor.Current = Cursors.Default;
+            cmdSendMail.Enabled = true;
         }
 
         private void cmdClear_Click(object sender, EventArgs e)
@@ -93,6 +96,8 @@ namespace SearchWindow
             lblFrom.Visible = false;
             lblTime.Visible = false;
             lblTo.Visible = false;
+            cmdSendMail.Enabled = false;
+            cmdstationboard.Enabled = false;
         }
 
         private void Helper(object sender, KeyEventArgs e)
@@ -103,6 +108,17 @@ namespace SearchWindow
             }
 
             var box = (ComboBox)sender;
+
+            if (!(box.Text == ""))
+            {
+                cmdstationboard.Enabled = true;
+            }
+
+            if (box.Text == "")
+            {
+                cmdstationboard.Enabled = false;
+                return;
+            }
 
             // Exit the Code when a Arrowkey is pressed (for Selection) or Control --> Shift key
             if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Control || e.KeyCode == Keys.Shift)
@@ -132,13 +148,17 @@ namespace SearchWindow
 
         private void cmdstatonboard_Click(object sender, EventArgs e)
         {
+            if (CMBSearch1.Text == "")
+            {
+                return;
+            }
             var CMBText1 = CMBSearch1.Text;
             var CMBText2 = CMBSearch2.Text;
             Transport transport = new Transport();
             var Station = transport.GetStations(CMBText1);
             var StationID = Station.StationList[0].Id;
 
-            Form2 stationboard = new Form2(CMBText1, StationID);
+            StationboardWindow stationboard = new StationboardWindow(CMBText1, StationID);
             stationboard.Show();
         }
 
@@ -170,13 +190,14 @@ namespace SearchWindow
             var StationXCoord = StationName.StationList[0].Coordinate.XCoordinate;
             var StationYCoord = StationName.StationList[0].Coordinate.YCoordinate;
 
-            //Process.Start("https://www.google.ch/maps/place/" + MapSearch + "/,13z");
-            Process.Start("https://www.google.ch/maps/@" + StationXCoord + "," + StationYCoord + "/,13z");
+            Process.Start("https://www.google.ch/maps/place/" + MapSearch + "/,13z");
+            //Process.Start("https://www.google.ch/maps/@" + StationXCoord + "," + StationYCoord + "/,13z");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cmdSendMail_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.google.ch/maps/@");
+            EmailWindow emailwindow = new EmailWindow(CMBSearch1.Text, CMBSearch2.Text, Connections);
+            emailwindow.Show();
         }
     }
 }
