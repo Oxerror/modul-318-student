@@ -19,7 +19,7 @@ namespace SearchWindow
 
             // Set the Title of the Stationboardwindow
             this.Text = "Statioboard: " + CMBText1;
-            Transport transport = new Transport();
+            ITransport transport = new Transport();
             var Stationboard = transport.GetStationBoard(CMBText1, StationID);
 
             foreach (var stationboardentries in Stationboard.Entries)

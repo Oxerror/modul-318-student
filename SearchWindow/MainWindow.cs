@@ -35,7 +35,7 @@ namespace SearchWindow
             // Set the Current Cursor the the Waitcursor
             Cursor.Current = Cursors.WaitCursor;
     
-            Transport transport = new Transport();
+            ITransport transport = new Transport();
             var CMBText1 = CMBSearch1.Text;
             var CMBText2 = CMBSearch2.Text;
             int isArrivaltime = 0;
@@ -167,7 +167,7 @@ namespace SearchWindow
 
             // Opens the Dropdown Menu of the Combobox (to see the possible stations)
             box.DroppedDown = true;
-            Transport transport = new Transport();
+            ITransport transport = new Transport();
             var SearchText = box.Text;
             var StationNames = await transport.GetStations(SearchText);
             // add Stationnames to Combobox
@@ -184,7 +184,7 @@ namespace SearchWindow
 
             var CMBText1 = CMBSearch1.Text;
             var CMBText2 = CMBSearch2.Text;
-            Transport transport = new Transport();
+            ITransport transport = new Transport();
             var Station = await transport.GetStations(CMBText1);
 
             // if there are no Station data return
@@ -207,7 +207,7 @@ namespace SearchWindow
 
         private async void cmdMap_Click(object sender, EventArgs e)
         {
-            Transport transport = new Transport();
+            ITransport transport = new Transport();
             Station station = new Station();
             var CMBText1 = CMBSearch1.Text;
             var CMBText2 = CMBSearch2.Text;
