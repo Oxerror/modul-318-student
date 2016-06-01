@@ -27,6 +27,12 @@ namespace SearchWindow
 
         private void cmdSend_Click(object sender, EventArgs e)
         {
+            if (txtFrom.Text == "" || txtPassword.Text == "" || txtTo.Text == "")
+            {
+                MessageBox.Show("Email- or Passwordfield is empty");
+                return;
+            }
+
             // Just works with gmail
             SmtpClient client = new SmtpClient();
             client.Port = 587;
@@ -60,8 +66,13 @@ namespace SearchWindow
                     IsBodyHtml = true
                 };
             }
-            catch (FormatException error)
+            catch (Exception error)
             {
+                if(!(error is FormatException) && !(error is ArgumentException))
+                {
+                    throw error;
+                }
+
                 MessageBox.Show("Check the Email address\n" + error.Message);
                 return;
             }

@@ -63,7 +63,7 @@
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Linie";
+            this.columnHeader3.Text = "Line";
             // 
             // StationboardWindow
             // 

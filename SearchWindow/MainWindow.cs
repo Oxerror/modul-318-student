@@ -27,6 +27,8 @@ namespace SearchWindow
             // Check if both Comboboxes are not empty
             if (CMBSearch1.Text == "" || CMBSearch2.Text == "")
             {
+                MessageBox.Show("At least one Stationfield is empty");
+                cmdSendMail.Enabled = false;
                 return;
             }
     
@@ -67,6 +69,8 @@ namespace SearchWindow
             // Check if a connection is available
             if (Connectionsavailable.ConnectionList.Count == 0)
             {
+                MessageBox.Show("There is no connection available");
+                cmdSendMail.Enabled = false;
                 return;
             }
     
@@ -121,7 +125,7 @@ namespace SearchWindow
             cmdstationboard.Enabled = false;
         }
 
-        private void Helper(object sender, KeyEventArgs e)
+        private async void Helper(object sender, KeyEventArgs e)
         {
             // Check if sender is a Combox
             if (!(sender is ComboBox))
@@ -136,15 +140,19 @@ namespace SearchWindow
             {
                 cmdstationboard.Enabled = true;
             }
-            // if the senderbox is empty, disable the Stationboard and return (return needed cause else a error appears)
-            if (box.Text == "")
+            // if the senderbox is empty and is the Departsearchbox disable the Stationboard and 
+            else if (box.Text == "" && box == CMBSearch1)
             {
                 cmdstationboard.Enabled = false;
+            }
+            // if the senderbox is empty return (return needed cause else a error appears)
+            if (box.Text == "")
+            {
                 return;
             }
 
-            // Exit the Code when a Arrowkey is pressed (for Selection), same for Control and Shift key (for commands)
-            if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Control || e.KeyCode == Keys.Shift)
+            // Exit the Code when a Arrowkey or the Enterkey is pressed (for Selection), same for Control and Shift key (for commands)
+            if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Control || e.KeyCode == Keys.Shift || e.KeyCode == Keys.Enter)
             {
                 return;
             }
@@ -161,7 +169,7 @@ namespace SearchWindow
             box.DroppedDown = true;
             Transport transport = new Transport();
             var SearchText = box.Text;
-            var StationNames = transport.GetStations(SearchText);
+            var StationNames = await transport.GetStations(SearchText);
             // add Stationnames to Combobox
             foreach (var Item in StationNames.StationList)
             {
@@ -169,16 +177,20 @@ namespace SearchWindow
             }
         }
 
-        private void cmdstatonboard_Click(object sender, EventArgs e)
+        private async void cmdstatonboard_Click(object sender, EventArgs e)
         {
+            // Change the Cursor to the WaitCursor
+            Cursor.Current = Cursors.WaitCursor;
+
             var CMBText1 = CMBSearch1.Text;
             var CMBText2 = CMBSearch2.Text;
             Transport transport = new Transport();
-            var Station = transport.GetStations(CMBText1);
+            var Station = await transport.GetStations(CMBText1);
 
             // if there are no Station data return
             if (Station.StationList.Count == 0)
             {
+                MessageBox.Show("Invalid Station");
                 return;
             }
 
@@ -188,9 +200,12 @@ namespace SearchWindow
             // Show th eStationboardWindow
             StationboardWindow stationboard = new StationboardWindow(CMBText1, StationID);
             stationboard.Show();
+
+            // Change the Cursor to the Default Cursor
+            Cursor.Current = Cursors.Default;
         }
 
-        private void cmdMap_Click(object sender, EventArgs e)
+        private async void cmdMap_Click(object sender, EventArgs e)
         {
             Transport transport = new Transport();
             Station station = new Station();
@@ -209,10 +224,20 @@ namespace SearchWindow
             // checks which button is the sender
             if (button == cmdMap1)
             {
+                if (CMBText1 == "")
+                {
+                    MessageBox.Show("The Departfield is empty");
+                    return;
+                }
                 MapSearch = CMBText1;
             }
             else if (button == cmdMap2)
             {
+                if (CMBText2 == "")
+                {
+                    MessageBox.Show("The Arrivalfield is empty");
+                    return;
+                }
                 MapSearch = CMBText2;
             }
             // if it isnt one of the buttons above return
@@ -222,7 +247,7 @@ namespace SearchWindow
             }
 
             //Get Stations with the entered name
-            var StationName = transport.GetStations(MapSearch);
+            var StationName = await transport.GetStations(MapSearch);
             // Get the X and Y coordiantes (if the mapsearch is with coordinates)
             // var StationXCoord = StationName.StationList[0].Coordinate.XCoordinate;
             // var StationYCoord = StationName.StationList[0].Coordinate.YCoordinate;
