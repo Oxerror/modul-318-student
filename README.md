@@ -1,6 +1,7 @@
 # modul-318-Student
 
-Students!
-Fork this repository to your own Github account. Work there with this repository. The intructor will clone your repo for inspection and evaluation.
+## Documentation
+Open the file doc318.docx for the Documentation.
 
-Have Fun!
+## Sourcecode
+As usual
