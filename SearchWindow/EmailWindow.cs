@@ -17,7 +17,9 @@ namespace SearchWindow
         public EmailWindow(string From, string To, Connections connections)
         {
             InitializeComponent();
+            // Change Labeltext to Station1 - Station2
             lblSendFromTo.Text = From + " - " + To;
+            // set Connections
             Connections = connections;
         }
 
@@ -25,6 +27,7 @@ namespace SearchWindow
 
         private void cmdSend_Click(object sender, EventArgs e)
         {
+            // Just works with gmail
             SmtpClient client = new SmtpClient();
             client.Port = 587;
             client.Host = "smtp.gmail.com";
@@ -37,33 +40,55 @@ namespace SearchWindow
             var Connect = Connections;
             var values = createValues();
 
+            // Replace the breaks with html breaks 
             var text = rtbText.Text.Replace("\r\n", "<br>").Replace("\n", "<br>") + "<br>--------------------------------------------<br>" + values;
 
+            MailMessage mail;
 
-            MailMessage mail = new MailMessage
-            (
-                txtFrom.Text,
-                txtTo.Text,
-                txtSubject.Text,
-                text
-            )
+            // try to fill in the data, if the Email address is not in the correct format show Errormessage and stop the code
+            try
             {
-                IsBodyHtml = true
-            };
-
+                mail = new MailMessage
+                (
+                    txtFrom.Text,
+                    txtTo.Text,
+                    txtSubject.Text,
+                    text
+                )
+                {
+                    //Mail is in Body html Code
+                    IsBodyHtml = true
+                };
+            }
+            catch (FormatException error)
+            {
+                MessageBox.Show("Check the Email address\n" + error.Message);
+                return;
+            }
 
             mail.BodyEncoding = UTF8Encoding.UTF8;
             mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
-            client.Send(mail);
+            // try to send the Email, if the Credentails are wrong show Errormessage and stop the code
+            try
+            {
+                client.Send(mail);
+            }
+            catch (SmtpException error)
+            {
+                MessageBox.Show("Check your Email and password\n" + error.Message);
+                return;
+            }
             MessageBox.Show("Email is successfully send.");
             Close();
         }
 
         private string createValues()
         {
+            // create in html code a table
             var text = "<table style='width: 100%'>";
 
+            // add titles to the table
             text += "<tr>"
                  + "<td>" + "<h4>From</h4>" + "</td>"
                  + "<td>" + "<h4>Departure</h4>" + "</td>"
@@ -76,6 +101,7 @@ namespace SearchWindow
 
             foreach (var connection in Connections.ConnectionList)
             {
+                // get the Connection datas
                 TimeSpan ts;
                 var FromName = connection.From.Station.Name;
                 var Departure = DateTime.Parse(connection.From.Departure).ToString("HH:mm");
@@ -86,6 +112,7 @@ namespace SearchWindow
                 ts = TimeSpan.ParseExact(connection.Duration, @"dd\dhh\:mm\:ss", null);
                 var Duaration = (ts.ToString(@"hh\:mm"));
 
+                // foreach Connetion create a new row and insert the data
                 text += "<tr>"
                 + "<td>" + FromName + "</td>"
                 + "<td>" + Departure + "</td>"
@@ -96,6 +123,7 @@ namespace SearchWindow
                 + "<td>" + Duaration + "</td>"
                 + "</tr>";
             }
+            // close the table
             text += "</table>";
             return text;
         }

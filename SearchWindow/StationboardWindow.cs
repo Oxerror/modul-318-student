@@ -17,12 +17,14 @@ namespace SearchWindow
         {
             InitializeComponent();
 
+            // Set the Title of the Stationboardwindow
             this.Text = "Statioboard: " + CMBText1;
             Transport transport = new Transport();
             var Stationboard = transport.GetStationBoard(CMBText1, StationID);
 
             foreach (var stationboardentries in Stationboard.Entries)
             {
+                // Add the Stationboard data to a Listview
                 var item = new ListViewItem(stationboardentries.To);
                 item.SubItems.Add(stationboardentries.Stop.Departure.ToShortTimeString());
                 item.SubItems.Add(stationboardentries.Name);
